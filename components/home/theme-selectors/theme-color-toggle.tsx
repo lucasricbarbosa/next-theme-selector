@@ -12,12 +12,42 @@ import { useThemeContext } from "@/app/theme-data-provider";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
-const availableThemeColors = [
-  { name: "Zinc", light: "bg-zinc-900", dark: "bg-zinc-700" },
-  { name: "Rose", light: "bg-rose-600", dark: "bg-rose-700" },
-  { name: "Blue", light: "bg-blue-600", dark: "bg-blue-700" },
-  { name: "Green", light: "bg-green-600", dark: "bg-green-500" },
-  { name: "Orange", light: "bg-orange-500", dark: "bg-orange-700" },
+export const availableThemeColors = [
+  {
+    name: "Zinc",
+    light: "bg-zinc-900",
+    dark: "bg-zinc-700",
+    placeholder: "Azul",
+    theme: "light",
+  },
+  {
+    name: "Rose",
+    light: "bg-rose-600",
+    dark: "bg-rose-700",
+    placeholder: "Azul",
+    theme: "light",
+  },
+  {
+    name: "Blue",
+    light: "bg-blue-600",
+    dark: "bg-blue-700",
+    placeholder: "Azul",
+    theme: "light",
+  },
+  {
+    name: "Green",
+    light: "bg-green-600",
+    dark: "bg-green-500",
+    placeholder: "Azul",
+    theme: "light",
+  },
+  {
+    name: "Orange",
+    light: "bg-orange-500",
+    dark: "bg-orange-700",
+    placeholder: "Azul",
+    theme: "light",
+  },
 ];
 
 export function ThemeColorToggle() {

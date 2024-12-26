@@ -3,7 +3,7 @@
 import { ThemeSelectorItem } from "./themeSelectorItem";
 import { RadioGroup } from "@/components/ui/radio-group";
 import { useThemeContext } from "@/app/theme-data-provider";
-import { ThemeColors } from "@/types/theme-types";
+import { availableThemeColors } from "./theme-color-toggle";
 
 export function ThemeSelectorContainer() {
   const { themeColor, setThemeColor } = useThemeContext();
@@ -14,7 +14,14 @@ export function ThemeSelectorContainer() {
       value={themeColor}
       onValueChange={(value) => setThemeColor(value as ThemeColors)}
     >
-      <ThemeSelectorItem />
+      {availableThemeColors.map(({ name, placeholder, theme }) => (
+        <ThemeSelectorItem
+          colorPlaceholder={placeholder}
+          colorName={name}
+          key={name}
+          themeColor={theme}
+        />
+      ))}
     </RadioGroup>
   );
 }

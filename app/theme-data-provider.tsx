@@ -1,7 +1,6 @@
 "use client";
 
 import setGlobalColorTheme from "@/lib/theme-colors";
-import { ThemeColors, ThemeColorStateParams } from "@/types/theme-types";
 import { useTheme } from "next-themes";
 import { ThemeProviderProps } from "next-themes";
 import { createContext, useContext, useEffect, useState } from "react";
@@ -27,7 +26,7 @@ export default function ThemeDataProvider({ children }: ThemeProviderProps) {
 
   useEffect(() => {
     localStorage.setItem("themeColor", themeColor);
-    setGlobalColorTheme(theme as "Zinc" | "dark", themeColor);
+    setGlobalColorTheme(theme as "light" | "dark", themeColor);
 
     if (!isMounted) {
       setIsMounted(true);

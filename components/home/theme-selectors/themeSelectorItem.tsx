@@ -6,8 +6,18 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export function ThemeSelectorItem() {
-  const { theme } = useTheme();
+interface ThemeSelectorItemProps {
+  colorName: string;
+  colorPlaceholder: string;
+  themeColor: string;
+}
+
+export function ThemeSelectorItem({
+  colorName,
+  colorPlaceholder,
+  themeColor,
+}: ThemeSelectorItemProps) {
+  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -21,7 +31,7 @@ export function ThemeSelectorItem() {
   return (
     <>
       <Label
-        htmlFor="theme-light"
+        htmlFor={colorName}
         className={`rounded-md cursor-pointer overflow-hidden h-full p-r ${
           theme === "light" ? "border-blue-500 border-2" : "border" }`}
       >
@@ -33,25 +43,12 @@ export function ThemeSelectorItem() {
           height={100}
         />
         <div className="border-t p-2 py-3 flex items-center">
-          <RadioGroupItem value="Zinc" id="theme-light" />
-          <p className="ml-2 font-semibold">Light default</p>
-        </div>
-      </Label>
-      <Label
-        htmlFor="theme-dark"
-        className={`rounded-md cursor-pointer overflow-hidden h-full per ${
-          theme === "dark" ? "border-blue-500 border-2" : "border" }`}
-      >
-        <Image
-          src="/github-default.svg"
-          alt="Demonstração da cor Dark"
-          className="aspect-video object-cover"
-          width={400}
-          height={100}
-        />
-        <div className="border-t p-2 py-3 flex items-center">
-          <RadioGroupItem value="Rose" id="theme-dark" />
-          <p className="ml-2 font-semibold">Dark</p>
+          <RadioGroupItem
+            onClick={() => setTheme(themeColor)}
+            value={colorName}
+            id={colorName}
+          />
+          <p className="ml-2 font-semibold">{colorPlaceholder}</p>
         </div>
       </Label>
     </>
